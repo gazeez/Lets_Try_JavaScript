@@ -106,10 +106,10 @@ document.body.appendChild( otherNewParagraph);
 
 var targetLink = document.querySelector ( ' .my-link')
 
-//forms
+//*********************forms***********************//
 
 var calculatorForm = document.getElementById ( 'calculator');
-calculatorForm.addEventListener( 'submit', function(){
+calculatorForm.addEventListener( 'submit', function(event){
 
     //STOP the submission (event!)
     event.preventDefault();
@@ -121,9 +121,36 @@ calculatorForm.addEventListener( 'submit', function(){
 
     // Retrieve the values from the form fields.
 
-    var operatorValue = operatorInput.nodeValue;
+    var operatorValue = operatorInput.value;
+    console.log(operatorValue);
     var num1Value = num1Input.value;
+    console.log(num1Value);
     var num2Value = num2Input.value;
+    console.log(num2Value);
 
-});
+    var result = 0;
+
+    //Let's run our math!
+
+switch (operatorValue)
+{
+    case 'add':
+        result = Number(num1Value) + Number(num2Value);
+        break;
+    case 'subtract':
+        result = num1Value - num2Value;
+        break;
+    case 'divide':
+    result = num1Value / num2Value;
+        break;
+    case 'multiply':
+        result = num1Value * num2Value;
+        break;
+}
+// End of Switch
+console.log(result);
+
+var resultElement = document.getElementById ('result');
+resultElement.textContent = result; // Show the result in our element
+}); // End of eventListener
 

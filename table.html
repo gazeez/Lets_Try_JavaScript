@@ -1,18 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>
-        Let's Learn Javascript! DAY 2!
-    </title>
-
+<html>
     <meta charset="UTF-8">
-    <meta name="description" content="current resume">
-    <meta name="author " content="Gafar Azeez">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/css?family=Simonetta&display=swap" rel="stylesheet">
-    <!-- <script defer src="https://kit.fontawesome.com/99ef05d8e8.js" crossorigin="anonymous"></script> -->
-    <link rel="stylesheet" type="text/css" href="./CSS/style.css">
-    <script type="text/javascript" src="./js/Day-2.js" defer></script>
+    <head>
+        <title>
+            Table Example
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./CSS/style.css">
+        <script type="text/javascript" src="./js/Table.js" defer></script>
 </head>
+    </head>
+    <body>
+        <h1>Table Example</h1>
+        <p>
+            <strong>
+                Your assignment:
+            </strong> 
+            Create a form with (4) fields and a button. When the submit event occurs, add the entered data into a new row (tr) full of data (td) in the table's body (tbody).
+        </p>
+        <table><!-- Open your table... -->
+            <thead><!-- Open the table head... -->
+                <tr><!-- Start a row... -->
+                    <th>Name</th><!-- Enter a heading per column... -->
+                    <th>Age</th>
+                    <th>School Class</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody><!-- Table body contains your data! -->
+                <tr><!-- Each row requires a "tr". -->
+                    <td>Bob</td><!-- Each cell in a row is "table data". Make sure it is the number of columns you are using. -->
+                    <td>30</td>
+                    <td>Programming</td>
+                    <td>Edmonton</td>
+                </tr>
+                <tr>
+                    <td>Sarah</td>
+                    <td>52</td>
+                    <td>Swimming</td>
+                    <td>Calgary</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

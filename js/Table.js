@@ -1,54 +1,84 @@
-let Tables = [
-    // { name: "Name", Age: Age, School: "School", City:"City"},
-    { name: "Bob", Age: 30, School: "Programming", City:"Edmonton"},
-    { name: "Sarah", Age: 52 , School: "Swimming", City:"Calgary"},
-    { name: "Gafar", Age: 31, School: "Software Developer", City:"Toronto"}
-    
-  ];
+// Table Exercise
 
+// First Capture the form!
 
-function generateTableHead(table, data) {
-    let thead = table.createTHead();
-    let row = thead.insertRow();
-    for (let key of data) {
-        let th = document.createElement("th");
-        let text = document.createTextNode(key);
-        th.appendChild(text);
-        row.appendChild(th);
-  }
+var myForm = document.getElementById( 'table-form');
+
+// =======================Delete table row element (assuming we click our 'tr > td > button' element. ==================================)
+
+function deleteRow( element){// element will be the button we pressed.
+  var tableRow = element.parentNode.parentNode; //2 level up from our button, to get our row.
+  tableRow.parentNode.removeChild( tableRow ); // An element cannot delete itself...so we have to tell the parent to do it for us!
+}
+
+//Grab existing buttons.
+
+var allButtons = document.querySelectorAll ( 'td > button');
+
+// Loop through our query selected buttons
+
+for (var i = 0; i < allButtons.length; i++){
+  //let's add listeners to these
+  allButtons[i].addEventListener( 'click', function (event){
+    deleteRow( this );
+  });
 }
 
 
-  function generateTable(table, data) {
-    for (let element of data) {
-      let row = table.insertRow();
-      for (key in element) {
-        let cell = row.insertCell();
-        let text = document.createTextNode(element[key]);
-        cell.appendChild(text);
-      }
-    }
-  }
-  let table = document.querySelector("table");
-  let data = Object.keys(Tables[0]);
-  generateTableHead(table, data);
-  generateTable(table, Tables );
+// Listen for a form submission...
+
+myForm.addEventListener( 'submit', function ( event){ 
+  // Prevent the form from ACTUALLY submitting (would leave or refresh the page, terminating our script.)
+  event.preventDefault();
+
+  // Grab your input elements.
+
+  var nameField = document.querySelector ( 'form > label > input'); //Gets first input (name field)
+  var ageField = document.getElementById ( 'age' );
+  var schoolClassField = document.getElementById( 'school-class');
+  var cityField = document.getElementById( 'city' );
+
+  //Extract the values.
+  var nameValue        = nameField.value;
+  var ageValue         = ageField.value;
+  var schoolClassValue = schoolClassField.value;
+  var cityValue        = cityField.value;
+ 
+  //Create new element (table row.)
+  var newRow = document.createElement( 'TR');
+
+    //Create new cell for the row (table data.)
+    var nameCell = document.createElement( 'TD' );
+    nameCell.textContent = nameValue; //Add our text to the cell
+    newRow.appendChild ( nameCell); //Add our cell to the table row.
+
+    //Create new cell for the row (table data.)
+    var ageCell = document.createElement( 'TD' );
+    ageCell.textContent = ageValue; //Add our text to the cell
+    newRow.appendChild ( ageCell); //Add our cell to the table row.
+
+    //Create new cell for the row (table data.)
+    var schoolClassCell = document.createElement( 'TD' );
+    schoolClassCell.textContent = schoolClassValue; //Add our text to the cell
+    newRow.appendChild ( schoolClassCell); //Add our cell to the table row.
+
+
+    //Create new cell for the row (table data.)
+    var cityCell = document.createElement( 'TD' );
+    cityCell.textContent = cityValue; //Add our text to the cell
+    newRow.appendChild ( cityCell); //Add our cell to the table row.
+
+    //create our delete button
+    var deleteButton = document.createElement( 'Button');
+    deleteButton.textContent = 'Delete Row'; //Add some text.
+    var actionCell = document.createElement( 'TD'); //CREATE THE ACTION CELL
+
+    actionCell.appendChild(deleteButton);  //add the button inside.
+    newRow.appendChild( actionCell); //DONT FORGET TO ADD THIS NEW CELL TO THE ROW TOO
+
+
   
-//   <th>Name</th><!-- Enter a heading per column... -->
-//   <th>Age</th>
-//   <th>School Class</th>
-//   <th>City</th>
-// </tr>
-// </thead>
-// <tbody><!-- Table body contains your data! -->
-// <tr><!-- Each row requires a "tr". -->
-//   <td>Bob</td><!-- Each cell in a row is "table data". Make sure it is the number of columns you are using. -->
-//   <td>30</td>
-//   <td>Programming</td>
-//   <td>Edmonton</td>
-// </tr>
-// <tr>
-//   <td>Sarah</td>
-//   <td>52</td>
-//   <td>Swimming</td>
-//   <td>Calgary</td>
+    //Target your table body.
+    var tableBody = document.getElementById( 'table-body' );
+    tableBody.appendChild( newRow); // Inject the brand new row, so the user can see it! Yay!
+});

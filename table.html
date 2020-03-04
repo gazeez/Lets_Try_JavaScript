@@ -18,6 +18,31 @@
             </strong> 
             Create a form with (4) fields and a button. When the submit event occurs, add the entered data into a new row (tr) full of data (td) in the table's body (tbody).
         </p>
+        <form id="table-form" action="#" method="GET">
+            <h2>
+                Add Info to Table 
+            </h2>
+            <label for="name">
+                Enter Name:
+                <input type="text" name="name" id="name">
+            </label>
+            <label for="age">
+                Enter Age:
+                <input type="number" name="age" id="age">
+            </label>
+            <label for="school-class">
+                School-Class:
+                <input type="text" name="school-class" id="school-class">
+            </label>
+            <label for="city">
+                Enter City:
+                <input type="text" name="city" id="city">
+            </label>
+            <button type="submit">
+                Add to Table
+            </button>
+          
+        </form>
         <table><!-- Open your table... -->
             <thead><!-- Open the table head... -->
                 <tr><!-- Start a row... -->
@@ -25,20 +50,23 @@
                     <th>Age</th>
                     <th>School Class</th>
                     <th>City</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
-            <tbody><!-- Table body contains your data! -->
+            <tbody id="table-body"><!-- Table body contains your data! -->
                 <tr><!-- Each row requires a "tr". -->
                     <td>Bob</td><!-- Each cell in a row is "table data". Make sure it is the number of columns you are using. -->
                     <td>30</td>
                     <td>Programming</td>
                     <td>Edmonton</td>
+                    <td> <button>Delete Row</button></td>
                 </tr>
                 <tr>
-                    <td>Sarah</td>
+                    <td>Sarah</td>s
                     <td>52</td>
                     <td>Swimming</td>
                     <td>Calgary</td>
+                    <td> <button>Delete Row</button></td>
                 </tr>
             </tbody>
         </table>

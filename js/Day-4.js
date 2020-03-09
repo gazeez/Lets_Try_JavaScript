@@ -120,8 +120,36 @@ myHeading.addEventListener( 'click', function ( event ) {
 } );
 
 
-//New Date Object
-var date = new
+/**
+ * Let's make a function.
+ */
+
+ // Function keyword, followed by the function name (and parameters if any are needed.)
+ function addTwoNumbers ( x, y )
+ {
+    x = Number( x ); // Enforce data-type (number.)
+    y = Number( y ); // Enforce data-type (number.)
+    return ( x + y ); // Add the two together.
+ }
+
+// Return current date as a string (2020.03.06)
+function currentDayString ()
+{
+    // New date object.
+    var date = new Date(); // @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+    // Declare a string we can store date info in.
+    var dateString = '';
+    dateString += date.getFullYear(); // Full four digit year.
+    dateString += '.'; // (Period for formatting.)
+    dateString += ( date.getMonth() + 1 ); // Month of the year.
+    dateString += '.'; // (Period for formatting.)
+    dateString += ( date.getDay() + 1 ); // Day of the week.
+    return dateString;
+}
+
+// Output to console.
+console.log( 'The current date is: \r\n' + currentDayString() ); // \r\n is return/newline - this will now output on TWO lines in your console.
+
 
 /**
  * Let's review some conditions-related operators...
@@ -144,3 +172,85 @@ var date = new
  console.log( 36 === '36'); //False
  console.log( 0 === false ); //False
  console.log( 'test string' === 'test string' ); //True
+
+//  =========Hamburger Menu========== //
+
+//Let's grab our Menu
+var myNav = document.querySelector( 'nav ');
+
+//And our menu button...
+var myNavButton = document.querySelector( '.menu-button' );
+
+//Let's listen for a click on this.
+myNavButton.addEventListener( 'click', function(event){
+    
+    //when clicked, add/remove the "nav-open" class (in HTML.)
+    myNav.classList.toggle( 'nav-open');
+});
+
+//===Let's Dig into Objects===//
+
+//JavaScript Object Notation (JSON)
+
+var myObject =  // Valid JSON Format//
+{
+    name:'Jungle',
+    age: 300,
+    hobbies: [ 
+        'soccer',
+        'gym',
+        'eating'
+    ]
+};
+
+console.log( myObject);
+
+console.log( 'Object "name": ' + myObject.name);
+console.log( 'Object "age": ' + myObject.age);
+console.log( 'Object "hobbies": ' + myObject.hobbies[0] + ',' + myObject.hobbies[1] + ',' + myObject.hobbies[2]);
+
+//Lets add to the hobbies array...just like normal! It is an array, afterall.
+//(Just stroed in an object property instead of a variable this time.)
+
+myObject.hobbies.push( ' programming');
+console.log( 'Updated hobbies');
+console.log( myObject.hobbies);
+
+console.log( 'Updated Object');
+console.log( myObject);
+
+
+//====Let's ramp things up a bit with a method=//
+
+var newObject = {
+    myNum:  5,
+    updateNum: function () {//Here is a method! Note the new syntax, versus a function 
+        //Difference from a function?
+        this.myNum = this.myNum + 5;
+        return this.myNum;
+
+    }
+};
+
+//====Object Constructors.===//
+
+function Person ( name, age, hobbies) {
+    this.name = name;
+    this.age = age;
+    this.hobbies = hobbies;
+}
+// Let's make a new  instance of "Person!" This is called an object.
+var jungle = new Person ( 'Jungle', 300, ['soccer', 'gym', 'programming']);
+
+// And another! Isn't this easier than typing out a whole object every time?
+var trina = new Person ( 'Trina', 18, ['tattoo', 'granite', 'fluffy']);
+
+var sally = new Person (
+    'Trina', //name:
+    18, //age:
+    [
+        'tattoo',
+        'granite',
+        'fluffy'
+    ]
+);

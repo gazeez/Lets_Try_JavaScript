@@ -118,3 +118,29 @@ myHeading.addEventListener( 'click', function ( event ) {
         // Remember, you must have a space between classes when assigning multiple.
     }
 } );
+
+
+//New Date Object
+var date = new
+
+/**
+ * Let's review some conditions-related operators...
+ */
+
+ // Check for equivalency (type-agnostic.)
+ console.log( 1 == true ); //True
+ console.log( 'Hello, World!' == true ); //False
+ console.log( -137 == true ); //False
+ console.log( 'test' == 'test' ); //True
+ console.log( 36 == '36'); //True
+ console.log( 0 == false ); //True
+ console.log( 'test string' == 'test string' ); //True
+
+ //check if identical ( value comparison including type.)
+ console.log( 1 === true ); //False
+ console.log( ''=== true ); //False
+ console.log( -137 === true ); //False
+ console.log( 'test' === 'test' ); //True
+ console.log( 36 === '36'); //False
+ console.log( 0 === false ); //False
+ console.log( 'test string' === 'test string' ); //True

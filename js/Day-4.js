@@ -234,18 +234,29 @@ var newObject = {
 
 //====Object Constructors.===//
 
+//Here is our blue print for "Person" objects
+
 function Person ( name, age, hobbies) {
     this.name = name;
     this.age = age;
     this.hobbies = hobbies;
-}
+    this.sayGoodbye = function (){
+        document.body.innerHTML += `
+        <p>
+        This is 
+        <strong>` + this.name + `</strong>,
+        saying <em>goodbye</em>!
+        </p>
+        `;
+    };
+};
 // Let's make a new  instance of "Person!" This is called an object.
 var jungle = new Person ( 'Jungle', 300, ['soccer', 'gym', 'programming']);
 
 // And another! Isn't this easier than typing out a whole object every time?
-var trina = new Person ( 'Trina', 18, ['tattoo', 'granite', 'fluffy']);
+// var trina = new Person ( 'Trina', 18, ['tattoo', 'granite', 'fluffy']);
 
-var sally = new Person (
+var trina = new Person (
     'Trina', //name:
     18, //age:
     [
@@ -254,3 +265,29 @@ var sally = new Person (
         'fluffy'
     ]
 );
+
+//We can add to the blueprint using "prototype", even after its initial declaration.
+
+Person.prototype.introduction = function () { //This is a method in our "Person" blueprint/prototype/class!
+
+    var hobbiesString = '<ul>'; // Set up for list HTML
+    this.hobbies.forEach( function (value, index) {
+        hobbiesString += '<li>' + value + '</li>'; // loop through our hobbies and make a list item for each.
+    });
+    hobbiesString += '</ul>'; //We opened a UL in this string, so lets close it! (concatenation!)
+
+    //Add HTML to the body
+    document.body.innerHTML += `
+    <h2>` + this.name + `</h2>
+    <dl>
+        <dt>Age</dt>
+        <dd>` + this.age + `</dd>
+        <dt>Hobbies</dt>
+        <dd>` + hobbiesString + `</dd>
+        </dl>
+        `; //We built the string above, using this.hobbies! "hobbiesString" is a local variable (born in the method, and it will die in the method.)
+}
+//Extra prototype practice: a property.
+Person.prototype.nickname = '';
+jungle.nickname = 'Call Me Zaddy';
+trina.nickname = 'CSS Fluffy';
